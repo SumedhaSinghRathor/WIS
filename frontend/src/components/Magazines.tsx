@@ -1,8 +1,17 @@
 import { useState, useEffect } from "react";
 
 function Magazines() {
+  interface Magazines {
+    cover: String;
+    firstIssue: number | null;
+    finalIssue: number | null;
+    id: Object;
+    magazineTitle: String;
+    reads: Object[];
+  }
+
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-  const [magazines, setMagazines] = useState([]);
+  const [magazines, setMagazines] = useState<Magazines[]>([]);
 
   useEffect(() => {
     const fetchMagazines = async () => {
@@ -10,7 +19,7 @@ function Magazines() {
         const response = await fetch(`${BACKEND_URL}/magazines`);
         if (!response.ok) throw new Error("Failed to fetch magazines");
 
-        const data = await response.json();
+        const data: Magazines[] = await response.json();
         setMagazines(data);
       } catch (error) {
         console.error(error);

@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 
 function Authors() {
+  interface Authors {
+    id: Object;
+    imgLink: String | null;
+    name: String;
+    reads: Object[];
+  }
+
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-  const [authors, setAuthors] = useState([]);
+  const [authors, setAuthors] = useState<Authors[]>([]);
 
   useEffect(() => {
     const fetchAuthors = async () => {
