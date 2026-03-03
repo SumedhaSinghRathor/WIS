@@ -46,10 +46,10 @@ class UserReads {
 public class User {
     @Id
     private ObjectId id;
-    @Indexed
+    @Indexed(unique = true)
     private String username;
     private String email;
-    private String password;
+    // private String password;
     private ReadLiteDTO[] favorites = new ReadLiteDTO[4];
     private List<UserReads> readIds = new ArrayList<>();
 
@@ -71,12 +71,12 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    // public String getPassword() {
+    //     return password;
+    // }
+    // public void setPassword(String password) {
+    //     this.password = password;
+    // }
     public ReadLiteDTO[] getFavorites() {
         return favorites;
     }
